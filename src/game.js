@@ -6,23 +6,21 @@ import { initialiseGame, newMove, backToMove } from "./slice.js";
 
 function Game() {
   const dispatch = useDispatch();
-  dispatch(initialiseGame);
-  const history = useSelector((state) => state.history);
-  const current = useSelector(
-    (state) => state.history[state.history.length - 1]
-  );
+  //  dispatch(initialiseGame);
+  const history = useSelector((state) => state.game.history);
+  const current = history[history.length - 1];
   const squares = current.squares.slice();
-  const xIsNext = useSelector((state) => state.xIsNext);
+  const xIsNext = useSelector((state) => state.game.xIsNext);
 
-  //   const [state, setState] = useState({
-  //     history: [
-  //       {
-  //         squares: Array(9).fill(null),
-  //       },
-  //     ],
-  //     stepNumber: 0,
-  //     xIsNext: true,
-  //   });
+  // const [state, setState] = useState({
+  //   history: [
+  //     {
+  //       squares: Array(9).fill(null),
+  //     },
+  //   ],
+  //   stepNumber: 0,
+  //   xIsNext: true,
+  // });
 
   const handleClick = (i) => {
     if (calculateWinner(squares) || squares[i]) {

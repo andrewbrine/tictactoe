@@ -15,16 +15,10 @@ export const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
-    initialiseGame: (state, action) => {
-      state = initialState;
-    },
-
     newMove: (state, action) => {
-      state.history.push(
-        (state.history[state.stepNumber - 1].squares[action.payload] =
-          state.xIsNext ? "X" : "O")
-      );
-      state.history.squares[action.payload] = state.xIsNext ? "X" : "O";
+      const current = state.history[state.history.length - 1];
+      current.squares[action.payload] = state.xIsNext ? "X" : "O";
+      state.history.push(current);
       state.stepNumber++;
       state.xIsNext = !state.xIsNext;
     },
