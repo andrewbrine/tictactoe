@@ -1,11 +1,20 @@
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
+  font: 18px "Comic Sans", sans-serif;
+  color: bisque;
   margin: 20px;
+  background-color: rgb(0, 0, 95);
+}
+h1 {
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 45%;
+  text-align: center;
 }
 
 ol,
 ul {
   padding-left: 30px;
+  vertical-align: top;
 }
 
 .board-row:after {
@@ -19,33 +28,75 @@ ul {
 }
 
 .square {
-  background: #fff;
-  border: 1px solid #999;
+  background: rgba(223, 216, 118, 0.959);
+  border: 2px solid black;
   float: left;
-  font-size: 24px;
+  font-size: 60px;
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
+  height: 100px;
+  margin-right: 0;
+  margin-top: 0;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 100px;
+}
+
+.board {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  margin-top: 15%;
+  margin-left: 25%;
 }
 
 .square:focus {
   outline: none;
+  background-color: beige;
 }
 
 .kbd-navigation .square:focus {
   background: #ddd;
 }
 
-.game {
+/* .game {
   display: flex;
   flex-direction: row;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+.move-list {
+  position: absolute;
+  margin-top: 15%;
+  margin-left: 50%;
 }
 
-.game-info {
-  margin-left: 20px;
+#info {
+  font-size: 26pt;
+  position: absolute;
+  padding: 10px;
+  margin-top: 15%;
+  margin-left: 34%;
+}
+
+.button {
+  padding: 10px;
+  margin: 1px;
+}
+
+li:nth-child(even) button {
+  position: relative;
+  background-color: darkslateblue;
+  color: azure;
+  border: 2px solid azure;
+}
+
+li:nth-child(odd) button {
+  position: relative;
+  background-color: azure;
+  color: darkslateblue;
+  border: 2px solid darkslateblue;
 }

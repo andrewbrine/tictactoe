@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { useSelector } from "react-redux";
 
-const initialState = {
+export const initialState = {
   history: [
     {
       squares: Array(9).fill(null),
@@ -19,17 +18,22 @@ export const gameSlice = createSlice({
       const current = state.history[state.history.length - 1];
       current.squares[action.payload] = state.xIsNext ? "X" : "O";
       state.history.push(current);
-      state.stepNumber++;
       state.xIsNext = !state.xIsNext;
+      state.stepNumber++;
     },
 
     backToMove: (state, action) => {
-      state.history = state.history.slice(0, action.payload + 1);
+      console.log(action.payload);
+      console.log(state.history);
+      state.history = action.payload
+        ? state.history.slice(0, action.payload)
+        : initialState.history;
+      console.log(state.history);
       state.stepNumber = action.payload;
       state.xIsNext = action.payload % 2 === 0;
     },
   },
 });
 
-export const { initialiseGame, newMove, backToMove } = gameSlice.actions;
+export const { newMove, backToMove } = gameSlice.actions;
 export default gameSlice.reducer;
